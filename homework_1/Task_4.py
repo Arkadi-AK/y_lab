@@ -1,16 +1,19 @@
+from itertools import combinations
+
+
 def bananas(s) -> set:
     result = set()
-    b = ''
-    for i in range(len(s)):
-        for j in range(len(s)):
-
-            b.join(j)
-            result.update()
-
+    default = 'banana'
+    couples = enumerate(s)
+    comb = combinations(couples, 6)
+    for i in comb:
+        dash_word = ['-' for i in range(len(s))]
+        add_word = ''.join(j[1] for j in i)
+        if add_word == default:
+            for y in i:
+                dash_word[y[0]] = y[1]
+            result.add(''.join(dash_word))
     return result
-
-
-
 
 
 assert bananas("banann") == set()
