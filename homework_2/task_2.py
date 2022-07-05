@@ -109,13 +109,30 @@ def wins(state, player):
 
 def computer_move():
     # TODO: add logic AI computer
+    # ======= ход компьютера и проверка на проигрыш=======
     while True:
-        row = random.randint(0, 9)
-        col = random.randint(0, 9)
-        if field[row][col]['text'] == ' ':
-            field[row][col]['text'] = 'O'
-            board[row][col] = 1
-            break
+        tmp_board = board[:]  # Делаю копию матрицы с ходмаи
+        col = random.randint(0, 9)  # Рандомный столбец
+        row = random.randint(0, 9)  # рандомная строка
+        tmp_board[row][col] = 1  # добавляю рандомные числа во временную матрицу
+        can_loss = wins(tmp_board, 1)  # проверяю даст ли проигрыш временная матрица "True - если проиграл"
+        tmp_board = []
+        print(tmp_board)
+        if can_loss == False:  # Если не даст проигрыш, то добавляем рандомные числа в основную матрицу
+            if field[row][col]['text'] == ' ':
+                field[row][col]['text'] = 'O'
+                board[row][col] = 1
+                tmp_board = []
+                break
+    # ===================================
+
+    # while True:
+    #     row = random.randint(0, 9)
+    #     col = random.randint(0, 9)
+    #     if field[row][col]['text'] == ' ':
+    #         field[row][col]['text'] = 'O'
+    #         board[row][col] = 1
+    #         break
 
 
 render_board()
