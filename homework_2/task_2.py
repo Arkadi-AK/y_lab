@@ -116,6 +116,13 @@ def wins(state, player):
         return False
 
 
+def move_0(row, col):
+    if field[row][col]['text'] == ' ':
+        field[row][col]['text'] = 'O'
+        board[row][col] = 1
+        return True
+
+
 def computer_move():
     # logic AI computer
     count = 0
@@ -130,15 +137,11 @@ def computer_move():
             can_loss = wins(tmp_board, 1)
             tmp_board = []
         if can_loss is False:
-            if field[row][col]['text'] == ' ':
-                field[row][col]['text'] = 'O'
-                board[row][col] = 1
+            if move_0(row, col):
                 break
         count += 1
         if count > 300:
-            if field[row][col]['text'] == ' ':
-                field[row][col]['text'] = 'O'
-                board[row][col] = 1
+            if move_0(row, col):
                 break
 
 
