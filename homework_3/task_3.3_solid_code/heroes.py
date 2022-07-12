@@ -35,8 +35,8 @@ class SuperHero:
 
 class Superman(SuperHero, LasersMixin):
 
-    def __init__(self, can_use_ultimate_attack=True):
-        super().__init__(self, can_use_ultimate_attack)
+    def __init__(self, *args, **kwargs):
+        super().__init__(self, *args, **kwargs)
         self.name = 'Clark Kent'
 
     def ultimate(self):
@@ -45,8 +45,8 @@ class Superman(SuperHero, LasersMixin):
 
 class ChackNorris(SuperHero, FireGunMixin, RoundhouseKickMixin):
 
-    def __init__(self, can_use_ultimate_attack=True):
-        super().__init__(self, can_use_ultimate_attack)
+    def __init__(self, *args, **kwargs):
+        super().__init__(self, *args, **kwargs)
         self.name = 'Chack Norris'
 
     def attack(self):
